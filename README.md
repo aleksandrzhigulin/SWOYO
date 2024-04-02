@@ -12,8 +12,15 @@ cd SWOYO
 ## Сборка и запуск
 Варианты:
 1) Запустить готовый экзешник main.exe
-2) "go run main.go" или "go run main.go -d"
-   (во втором случае username,password,database name будут взяты из окружения + port=5432, host=database)
+2) "go run main.go" или "go run main.go -d" 
+   (во втором случае параметры для подключения к БД будут взяты из .env)
+```
+POSTGRES_USER=swoyo
+POSTGRES_PASSWORD=swoyo
+POSTGRES_DB=swoyo
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+```
 3) Если нужно протестировать как сервис работает с postgresql, 
 а она не установлена/лень настраивать окружение, то можно
 воспользоваться: "docker-compose up --build -d" (порт так же будет 8080)
@@ -21,7 +28,7 @@ cd SWOYO
 ```bash
 docker-compose up --build -d
 ```
-Дождаться запуска
+Дождаться запуска <br/>
 Без Docker
 ![RUN_WITHOUT_DB](https://github.com/aleksandrzhigulin/SWOYO/assets/66275482/65e13f0b-bf34-4de9-b2d4-b85a4858e216)
 

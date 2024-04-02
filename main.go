@@ -7,6 +7,8 @@ import (
 	"SWOYO/storage"
 	"context"
 	"fmt"
+	"github.com/joho/godotenv"
+	_ "github.com/joho/godotenv"
 	"log"
 	"net"
 	"net/http"
@@ -20,6 +22,10 @@ func main() {
 	// Если есть аргумент -d, то сохранение данных идёт в postgresql
 	// иначе - в hashmap чтоб узнавать есть ли там url за O(1)
 	argument := ""
+	err := godotenv.Load()
+	if err != nil {
+		return
+	}
 	if len(os.Args[1:]) > 0 {
 		argument = os.Args[1]
 	}
@@ -34,11 +40,13 @@ func main() {
 	// Подключение к базе данных если есть -d, в любом случае управление сохранением данных
 	// делегируется StorageService
 	if argument == "-d" {
-		dbUser, dbPassword, dbName :=
+		dbUser, dbPassword, dbName, dbHost, dbPort :=
 			os.Getenv("POSTGRES_USER"),
 			os.Getenv("POSTGRES_PASSWORD"),
-			os.Getenv("POSTGRES_DB")
-		database, err := db.Init(dbUser, dbPassword, dbName)
+			os.Getenv("POSTGRES_DB"),
+			os.Getenv("POSTGRES_HOST"),
+			os.Getenv("POSTGRES_PORT")
+		database, err := db.Init(dbUser, dbPassword, dbName, dbHost, dbPort)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
