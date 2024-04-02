@@ -31,6 +31,7 @@ docker-compose up --build -d
 Дождаться запуска <br/>
 Без Docker
 ![RUN_WITHOUT_DB](https://github.com/aleksandrzhigulin/SWOYO/assets/66275482/65e13f0b-bf34-4de9-b2d4-b85a4858e216)
+![RUN_WITH_FLAG](https://github.com/aleksandrzhigulin/SWOYO/assets/66275482/ccaf8830-e41a-42ab-b2ed-9ee5a8c4519f)
 
 С Docker
 ![RUN_DOCKER](https://github.com/aleksandrzhigulin/SWOYO/assets/66275482/dc8dad9b-67e3-4c2b-85dd-428176330521)
